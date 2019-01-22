@@ -1,0 +1,45 @@
+
+.avatar-root {
+  display: inline-block;
+  box-sizing: border-box;
+  .face {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+.gradual-circle {
+  position: relative;
+  z-index: 5;
+  border: 10px solid transparent;
+
+  &:before {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    display: block;
+    content: " ";
+    background-color: #100E1B;
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+  }
+  &:after {
+    position: absolute;
+    z-index: -2;
+    border-radius: 50%;
+    display: block;
+    content: " ";
+    background: linear-gradient(146deg, #F0EA3D 0%, #6BB92D 35%, #006234 70%, #296DB1 100%);
+    top: -10px;
+    left: -10px;
+    bottom: -10px;
+    right: -10px;
+  }
+  .face {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
+import AtAvatar from '../../components/avatar'
+
 import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
@@ -22,8 +24,12 @@ import './index.less'
 }))
 class Index extends Component {
 
-    config = {
-    navigationBarTitleText: '首页'
+  config = {
+    "navigationBarBackgroundColor": "#100E1B",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "朋友分享",
+    "backgroundColor": "#100E1B",
+    "backgroundTextStyle": "light"
   }
 
   componentWillReceiveProps (nextProps) {
@@ -38,12 +44,11 @@ class Index extends Component {
 
   render () {
     return (
-      <View className='index'>
-        <Button className='add_btn' onClick={this.props.add}>+</Button>
-        <Button className='dec_btn' onClick={this.props.dec}>-</Button>
-        <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
-        <View><Text>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+      <View className='index-container'>
+        <View className='touch-container'>123</View>
+        <View className='relation-container'>
+          <AtAvatar shape="gradual-circl" src="http://p2-q.mafengwo.net/s11/M00/A5/4D/wKgBEFplx2WAbN7wAAkx9C0WxCk54.jpeg" />
+        </View>
       </View>
     )
   }
