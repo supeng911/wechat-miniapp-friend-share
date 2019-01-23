@@ -3,6 +3,8 @@ import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
 import AtAvatar from '../../components/avatar'
+import AtNoteInfo from '../../components/note-info'
+import AtTouchSlide from '../../components/touch-slide'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 
@@ -45,9 +47,11 @@ class Index extends Component {
   render () {
     return (
       <View className='index-container'>
-        <View className='touch-container'>123</View>
+        <View className='touch-container'>
+          <AtTouchSlide />
+        </View>
         <View className='relation-container'>
-          <AtAvatar shape="gradual-circl" src="http://p2-q.mafengwo.net/s11/M00/A5/4D/wKgBEFplx2WAbN7wAAkx9C0WxCk54.jpeg" />
+          <AtNoteInfo />
         </View>
       </View>
     )

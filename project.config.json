@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "friend-share",
 	"description": "",
-	"appid": "touristappid",
+	"appid": "wx786f4d56d9bb77ca",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,

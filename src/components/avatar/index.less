@@ -43,3 +43,29 @@
     height: 80px;
   }
 }
+
+.slide-white-circle {
+  position: relative;
+  &:after {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    content: " ";
+    background-color: #3678BD;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    bottom: -18px;
+    left: 50%;
+    margin-left: -18px;
+    background-image: url("../../assets/icon_follow_btn_plus.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+  }
+  .face {
+    width: 65px;
+    height: 65px;
+    border: 2px solid #FFFFFF;
+  }
+}

@@ -15,8 +15,10 @@ class Avatar extends Component{
       className: classNameProp,
     } = this.props
 
+    console.log(111, shape)
+
     return (
-      <View className={classNames('avatar-root', 'gradual-circle', {[classNameProp]: Boolean(classNameProp)})}>
+      <View className={classNames('avatar-root', shape, {[classNameProp]: Boolean(classNameProp)})}>
         <Image className='face' src={src} />
       </View>
     );
