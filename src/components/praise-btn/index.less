@@ -1,0 +1,54 @@
+
+.praise-btn-root {
+  display: block;
+  position: relative;
+  margin-top: 35px;
+  width: 65px;
+  .icon {
+    display: block;
+    width: 65px;
+    height: 65px;
+  }
+  .num {
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: -5px;
+    color: #FFFFFF;
+    width: 100%;
+    text-align: center;
+  }
+  .pop-btn-group {
+    display: flex;
+    visibility: hidden;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 20px;
+    right: 100px;
+    top: 8px;
+    width: 360px;
+    height: 50px;
+    color: #FFFFFF;
+    view {
+      display: block;
+      flex: 1;
+      text-align: center;
+      font-size: 28px;
+      line-height: 42px;
+      &:first-child {
+        border-right: 2px solid #3C3C3C;
+      }
+      &:last-child {
+        border-left: 2px solid #3C3C3C;
+      }
+    }
+    &.show {
+      visibility: visible;
+    }
+  }
+
+
+
+}
