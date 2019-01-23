@@ -4,14 +4,19 @@ import AtAvatar from "../avatar"
 import AtPraiseBtn from '../praise-btn'
 import PicWechat from '../../assets/pic_wechat.png'
 import IconFull from '../../assets/icon_full.png'
+import PicVideoPlayButton from '../../assets/pic_video_play_button.png'
 import './index.less'
 
 
-class ArticleInfo extends Component {
+class VideoInfo extends Component {
 
   render() {
+
+    const {src} = this.props
+
     return (
-      <View className='article-info'>
+      <View className='video-info' style={{backgroundImage: `url(${src})`}}>
+        <Image className='play-btn' src={PicVideoPlayButton} />
         <View className='note-about'>
           <View className='name'>@美国新秀POT</View>
           <View className='about'>
@@ -44,4 +49,4 @@ class ArticleInfo extends Component {
   }
 }
 
-export default ArticleInfo
+export default VideoInfo
