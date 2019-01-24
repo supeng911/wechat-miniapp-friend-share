@@ -1,12 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
-import AtAvatar from '../../components/avatar'
+import { View } from '@tarojs/components'
 import AtNoteInfo from '../../components/note-info'
 import AtTouchSlide from '../../components/touch-slide'
-
-import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
 
@@ -31,17 +27,20 @@ class Index extends Component {
     })
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
-  }
+  // componentWillReceiveProps (nextProps) {
+  //   console.log(this.props, nextProps)
+  // }
 
-  componentWillUnmount () { }
+  // componentWillUnmount () { }
 
-  componentDidShow () { }
+  // componentDidShow () { }
 
-  componentDidHide () { }
+  // componentDidHide () { }
 
   render () {
+
+    console.log(1111, this.props)
+
     return (
       <View className='index-container'>
         <View className='touch-container'>

@@ -4,8 +4,9 @@ export default {
   namespace: 'IndexModel',
   state: {
     current: 1,
-    hasNext: false,
+    hasMore: false,
     size: 5,
+    total: 0,
     data: [],
   },
   reducers: {
@@ -14,10 +15,9 @@ export default {
     },
   },
   effects: {
-    * fetch(_, {all, call, put}) {
-      console.log('fetch init', service)
+    * fetch(_, {call, put}) {
       const res = yield call(service.getFeedList, {});
-      console.log('this is common init', res)
+      yield put({type: 'save', payload: res});
     },
   },
 };
