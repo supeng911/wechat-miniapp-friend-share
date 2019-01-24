@@ -10,20 +10,11 @@ import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
 
-
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add () {
-    dispatch(add())
-  },
-  dec () {
-    dispatch(minus())
-  },
-  asyncAdd () {
-    dispatch(asyncAdd())
-  }
-}))
+@connect(state => {
+  return {
+    relationNotes: state.IndexModel.data
+  };
+})
 class Index extends Component {
 
   config = {
@@ -32,6 +23,12 @@ class Index extends Component {
     "navigationBarTitleText": "朋友分享",
     "backgroundColor": "#100E1B",
     "backgroundTextStyle": "light"
+  }
+
+  componentWillMount() {
+    this.props.dispatch({
+      type: 'IndexModel/fetch'
+    })
   }
 
   componentWillReceiveProps (nextProps) {
