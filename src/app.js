@@ -1,12 +1,10 @@
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
-// import { Provider } from '@tarojs/redux'
+import { Provider } from '@tarojs/redux'
 import Index from './pages/index'
 import dva from './dva'
 import models from './model'
-import {Provider} from '@tarojs/redux'
-
-
+// import {Provider} from '@tarojs/redux'
 // import configStore from './store'
 
 import './app.less'
