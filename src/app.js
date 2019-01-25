@@ -31,8 +31,9 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/detail/video',
       'pages/index/index',
+      'pages/detail/video',
+
 
     ],
     window: {

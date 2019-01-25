@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import {abs} from '../../utils/helps'
 import AtVideoInfo from './VideoInfo'
+import AtArticleInfo from './ArticleInfo'
 import './index.less'
 
 class TouchSlide extends Component {
@@ -125,7 +126,7 @@ class TouchSlide extends Component {
               key={key}
             >
               {noteItem.type === 'Video'? (<AtVideoInfo data={noteItem} />):null}
-              {noteItem.type === 'Article'? (<View>{key} --this is Article--{noteItem.hashId} -- {noteItem.type}</View>):null}
+              {noteItem.type === 'Article'? (<AtArticleInfo data={noteItem} />):null}
               {noteItem.type === 'Ask'? (<View>{key} --this is ask--{noteItem.hashId} -- {noteItem.type}</View>):null}
             </View>
           );

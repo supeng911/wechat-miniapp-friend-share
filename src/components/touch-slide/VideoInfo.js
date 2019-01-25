@@ -17,7 +17,7 @@ class VideoInfo extends Component {
     const {data} = this.props
 
     return (
-      <View className='video-info' style={{backgroundImage: `url(${oss_image(data.cover)})`}}>
+      <View className='video-info' style={{backgroundImage: `url(${oss_image(data.cover, [660,990])})`}}>
         <Image className='play-btn' src={PicVideoPlayButton} />
         <View className='note-about'>
           <View className='name'>@{data.author.nickName}</View>
@@ -26,7 +26,7 @@ class VideoInfo extends Component {
         <View className='control-ext'>
           <AtAvatar
             shape='slide-white-circle'
-            src={oss_image(data.author.face)}
+            src={oss_image(data.author.face, [42,42])}
           />
 
           <AtPraiseBtn />
