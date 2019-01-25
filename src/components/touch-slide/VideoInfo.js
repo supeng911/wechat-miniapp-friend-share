@@ -1,5 +1,8 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Image, Text} from '@tarojs/components'
+import {View, Image} from '@tarojs/components'
+import PropTypes from "prop-types";
+import oss_image from '../../utils/oss_image'
+import {formatStr} from '../../utils/format'
 import AtAvatar from "../avatar"
 import AtPraiseBtn from '../praise-btn'
 import PicWechat from '../../assets/pic_wechat.png'
@@ -11,24 +14,19 @@ import './index.less'
 class VideoInfo extends Component {
 
   render() {
-
-    const {src} = this.props
+    const {data} = this.props
 
     return (
-      <View className='video-info' style={{backgroundImage: `url(${src})`}}>
+      <View className='video-info' style={{backgroundImage: `url(${oss_image(data.cover)})`}}>
         <Image className='play-btn' src={PicVideoPlayButton} />
         <View className='note-about'>
-          <View className='name'>@美国新秀POT</View>
-          <View className='about'>
-            好的风景，不只是优美#视觉符号#的传递
-            与艺 人专辑整体风格的契合。从而达到
-            个性的。。。
-          </View>
+          <View className='name'>@{data.author.nickName}</View>
+          <View className='about'>{formatStr(data.about, 80)}</View>
         </View>
         <View className='control-ext'>
           <AtAvatar
             shape='slide-white-circle'
-            src='http://p2-q.mafengwo.net/s11/M00/A5/4D/wKgBEFplx2WAbN7wAAkx9C0WxCk54.jpeg'
+            src={oss_image(data.author.face)}
           />
 
           <AtPraiseBtn />
@@ -42,11 +40,19 @@ class VideoInfo extends Component {
             <Image className='icon' src={IconFull} />
             <View className='num'>全屏</View>
           </View>
-
         </View>
       </View>
     );
   }
 }
+
+VideoInfo.propTypes = {
+  data: PropTypes.object,
+}
+
+VideoInfo.defaultProps = {
+  data: {}
+}
+
 
 export default VideoInfo

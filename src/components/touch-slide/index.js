@@ -83,7 +83,7 @@ class TouchSlide extends Component {
 
     if ((moveX > 0) && this.props.onShowItem) {
       // 显示元素详情
-      this.props.onShowItem(moveItemKey)
+      this.props.onShowItem(this.props.data[moveItemKey])
     }
   }
 
@@ -98,28 +98,9 @@ class TouchSlide extends Component {
   render() {
 
     const {data} = this.props;
-    console.log('touch', data)
 
     return (
       <View className='touch-slide-root'>
-
-        {/*
-        <View className='touch-item back-item'>
-          <AtVideoInfo src='http://n3-q.mafengwo.net/s12/M00/73/D1/wKgED1w--7SAOcOhAAweIvLAFdg77.jpeg'/>
-        </View>
-        <View
-          className='touch-item front-item'
-          style={this.makeMoveStyle({}, 2)}
-          onTouchStart={this.handleTouchStart.bind(this, 2)}
-          onTouchMove={this.handleTouchMove}
-          onTouchEnd={this.handleTouchEnd}
-          onClick={this.handleClick}
-        >
-          <AtVideoInfo src='http://b3-q.mafengwo.net/s12/M00/5B/96/wKgED1xAwiKALJbkAA6vDNnM1EM77.jpeg'/>
-        </View>
-
-         */}
-
         {data.map((noteItem, key) => {
           let touchStyle = {};
           const {moveX, moveY, animate, moveItemKey} = this.state
@@ -143,7 +124,7 @@ class TouchSlide extends Component {
               onClick={this.handleClick}
               key={key}
             >
-              {noteItem.type === 'Video'? (<View>{key} -- this is video--{noteItem.hashId} -- {noteItem.type}</View>):null}
+              {noteItem.type === 'Video'? (<AtVideoInfo data={noteItem} />):null}
               {noteItem.type === 'Article'? (<View>{key} --this is Article--{noteItem.hashId} -- {noteItem.type}</View>):null}
               {noteItem.type === 'Ask'? (<View>{key} --this is ask--{noteItem.hashId} -- {noteItem.type}</View>):null}
             </View>

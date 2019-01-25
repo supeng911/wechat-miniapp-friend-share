@@ -44,8 +44,15 @@ class Index extends Component {
     })
   }
 
-  handleShowNote = () => {
-    console.log('show note')
+  handleShowNote = (noteItem) => {
+    const {type} = noteItem;
+    if(type === 'Video') {
+      Taro.navigateTo({
+        url: '/pages/detail/video'
+      })
+    }
+    console.log('show note', type)
+
   }
 
   render () {
