@@ -98,6 +98,7 @@ class TouchSlide extends Component {
   render() {
 
     const {data} = this.props;
+    console.log('touch', data)
 
     return (
       <View className='touch-slide-root'>
@@ -142,7 +143,9 @@ class TouchSlide extends Component {
               onClick={this.handleClick}
               key={key}
             >
-              asdasd-{key}
+              {noteItem.type === 'Video'? (<View>{key} -- this is video--{noteItem.hashId} -- {noteItem.type}</View>):null}
+              {noteItem.type === 'Article'? (<View>{key} --this is Article--{noteItem.hashId} -- {noteItem.type}</View>):null}
+              {noteItem.type === 'Ask'? (<View>{key} --this is ask--{noteItem.hashId} -- {noteItem.type}</View>):null}
             </View>
           );
         })}

@@ -25,7 +25,8 @@ export default {
       // 删除第一个元素
       const oldData = yield select(state => state.IndexModel.data)
       // console.log('removeFirstItem 111', oldData)
-      const newData = update(oldData, { $splice: [[0, 1]] });
+      const index = oldData.length -1
+      const newData = update(oldData, { $splice: [[index, 1]] });
       // console.log('removeFirstItem 222', newData)
       yield put({
         type: 'save',
@@ -49,7 +50,7 @@ export default {
         hasMore: { $set: response.hasMore },
         size: { $set: response.size },
         total: { $set: response.total },
-        data: { $push: response.data },
+        data: { $unshift: response.data },
       })
 
       yield put({type: 'save', payload: newState});
