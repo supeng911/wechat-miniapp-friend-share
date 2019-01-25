@@ -1,7 +1,8 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import Taro, {Component} from '@tarojs/taro'
+import {View, Button, Text} from '@tarojs/components'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import {abs} from '../../utils/helps'
 import AtVideoInfo from './VideoInfo'
 import './index.less'
 
@@ -54,20 +55,20 @@ class TouchSlide extends Component {
   handleTouchEnd = () => {
     const {moveX, moveItemKey} = this.state
 
-    if (abs(moveX) <= 100) {
+    if (abs(moveX) <= 200) {
       // 小于 50，恢复默认值
       this.setState({
         animate: true,
         moveX: 0,
         moveY: 0,
       })
-      return ;
+      return;
     }
 
     const newMoveX = moveX > 0 ? 950 : -950;
     this.setState({
       animate: true,
-      moveX:newMoveX,
+      moveX: newMoveX,
     })
 
     // 初始化数据
@@ -75,47 +76,36 @@ class TouchSlide extends Component {
       this._initState();
     }, 300)
 
-    if( (moveX < 0) && this.props.onRemoveItem) {
+    if ((moveX < 0) && this.props.onRemoveItem) {
       // 移除元素
-      this.props.onRemoveItem(moveItemKey);
+      this.props.onRemoveItem(this.props.data[moveItemKey]);
     }
 
-    if( (moveX > 0) && this.props.onShowItem) {
+    if ((moveX > 0) && this.props.onShowItem) {
       // 显示元素详情
       this.props.onShowItem(moveItemKey)
     }
   }
 
   handleClick = () => {
-    if( this.props.onShowItem) {
+    if (this.props.onShowItem) {
       // 显示元素详情
       this.props.onShowItem()
     }
   }
 
-  makeMoveStyle = (item, key) => {
-
-    const {moveX, moveY, animate, moveItemKey} = this.state
-
-    const moveStyle = {
-      backgroundImage: `url(http://n3-q.mafengwo.net/s12/M00/73/D1/wKgED1w--7SAOcOhAAweIvLAFdg77.jpeg})`
-    }
-
-    if(key === moveItemKey) {
-      moveStyle.transition = animate ?  "transform .5s" : 'none'
-      moveStyle.transform = `translateX(${moveX}rpx)  translateY(${moveY}rpx) rotate(${moveX / 10}deg) `
-    }
-
-    return moveStyle;
-  }
 
   render() {
+
+    const {data} = this.props;
+
     return (
       <View className='touch-slide-root'>
+
+        {/*
         <View className='touch-item back-item'>
           <AtVideoInfo src='http://n3-q.mafengwo.net/s12/M00/73/D1/wKgED1w--7SAOcOhAAweIvLAFdg77.jpeg'/>
         </View>
-
         <View
           className='touch-item front-item'
           style={this.makeMoveStyle({}, 2)}
@@ -126,9 +116,49 @@ class TouchSlide extends Component {
         >
           <AtVideoInfo src='http://b3-q.mafengwo.net/s12/M00/5B/96/wKgED1xAwiKALJbkAA6vDNnM1EM77.jpeg'/>
         </View>
+
+         */}
+
+        {data.map((noteItem, key) => {
+          let touchStyle = {};
+          const {moveX, moveY, animate, moveItemKey} = this.state
+          if(key === moveItemKey) {
+            touchStyle = {
+              transition: animate ? "transform .5s" : 'none',
+              transform: `translateX(${moveX}rpx)  translateY(${moveY}rpx) rotate(${-moveX / 20}deg) `
+            }
+          }
+          return (
+            <View
+              className={classNames({
+                'touch-item': true,
+                'back-item': key < (data.length - 1),
+                'front-item': key = (data.length - 1)
+              })}
+              style={touchStyle}
+              onTouchStart={this.handleTouchStart.bind(this, key)}
+              onTouchMove={this.handleTouchMove}
+              onTouchEnd={this.handleTouchEnd}
+              onClick={this.handleClick}
+              key={key}
+            >
+              asdasd-{key}
+            </View>
+          );
+        })}
       </View>
     );
   }
+}
+
+TouchSlide.propTypes = {
+  data: PropTypes.array,
+  onRemoveItem: PropTypes.func,
+  onShowItem: PropTypes.func,
+}
+
+TouchSlide.defaultProps = {
+  data: []
 }
 
 export default TouchSlide

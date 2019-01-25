@@ -1,7 +1,11 @@
 import request from '../../utils/request'
 
 export function getFeedList({page=1, size=5}) {
-  return request('/test');
+  // FIXME url need fix
+  return request('/feed/list', {
+    method: 'POST',
+    data: {page, size}
+  });
 }
 
 

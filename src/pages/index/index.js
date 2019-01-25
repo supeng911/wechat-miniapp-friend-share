@@ -37,14 +37,31 @@ class Index extends Component {
 
   // componentDidHide () { }
 
+  handleRemoveNote = (noteItem) => {
+    // console.log('remove', noteItem)
+    this.props.dispatch({
+      type: 'IndexModel/removeFirstItem',
+    })
+  }
+
+  handleShowNote = () => {
+    console.log('show note')
+  }
+
   render () {
 
-    console.log(1111, this.props)
+    const {
+      relationNotes,
+    } = this.props
 
     return (
       <View className='index-container'>
         <View className='touch-container'>
-          <AtTouchSlide />
+          <AtTouchSlide
+            data={relationNotes}
+            onRemoveItem={this.handleRemoveNote}
+            onShowItem={this.handleShowNote}
+          />
         </View>
         <View className='relation-container'>
           <AtNoteInfo />
