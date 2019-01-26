@@ -8,7 +8,7 @@ import './index.less'
 
 @connect(state => {
   return {
-    relationNotes: state.IndexModel.data
+    relationNotes: state.IndexModel.list
   };
 })
 class Index extends Component {

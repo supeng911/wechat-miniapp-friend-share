@@ -1,10 +1,10 @@
 import request from '../../utils/request'
 
-export function getFeedList({page=1, size=5}) {
+export function getFeedList({uid=1, offset=0, size = 5}) {
   // FIXME url need fix
-  return request('/feed/list', {
+  return request('/recommend', {
     method: 'POST',
-    data: {page, size}
+    data: {uid, offset, size}
   });
 }
 

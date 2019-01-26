@@ -25,6 +25,7 @@ class ArticleInfo extends Component{
         </View>
         <View className='about'>
           {data.about}
+          <Text className='more'> >>>更多 </Text>
         </View>
 
         <View className='control-ext'>

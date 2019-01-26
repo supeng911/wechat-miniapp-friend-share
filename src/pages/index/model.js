@@ -5,11 +5,9 @@ import * as service from './service'
 export default {
   namespace: 'IndexModel',
   state: {
-    current: 1,
-    hasMore: false,
-    size: 5,
-    total: 0,
-    data: [],
+    nextOffset: 0,
+    ieEnd: false,
+    list: [],
   },
   reducers: {
     save(state, {payload}) {
@@ -21,19 +19,19 @@ export default {
       const res = yield call(service.getFeedList, {});
       yield put({type: 'save', payload: res});
     },
-    * removeFirstItem(_,  {call, put, select}) {
+    * removeFirstItem(_,  { put, select}) {
       // 删除第一个元素
-      const oldData = yield select(state => state.IndexModel.data)
+      const oldList = yield select(state => state.IndexModel.list)
       // console.log('removeFirstItem 111', oldData)
-      const index = oldData.length -1
-      const newData = update(oldData, { $splice: [[index, 1]] });
+      const index = oldList.length -1
+      const newList = update(oldList, { $splice: [[index, 1]] });
       // console.log('removeFirstItem 222', newData)
       yield put({
         type: 'save',
-        payload: {data: newData}
+        payload: {list: newList}
       })
 
-      if (newData.length < 3) {
+      if (newList.length < 3) {
         // 少于 3 个元素， 加载更多内容
         yield put({
           type: 'loadMore',
