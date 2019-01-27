@@ -22,8 +22,6 @@ class GroupInfo extends Component {
             </View>
           </View>
           <View className='face-group'>
-            
-
             <Image className='img' src='http://p2-q.mafengwo.net/s12/M00/E2/61/wKgED1w_NRGAQwJ0AACiyHGbECo35.jpeg' />
             <Image className='img' src='http://p1-q.mafengwo.net/s10/M00/02/87/wKgBZ1iS9JaABXe_AACSDHGkDT459.jpeg' />
             <Image className='img' src='http://n4-q.mafengwo.net/s10/M00/A0/5B/wKgBZ1iZRgeACGnmAAf4KdXCD1c95.jpeg' />
