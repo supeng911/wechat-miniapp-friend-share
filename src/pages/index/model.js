@@ -7,6 +7,7 @@ export default {
   namespace: 'IndexModel',
   state: {
     hasNext: true,
+    offset: 0,
     list: [],
   },
   reducers: {
@@ -38,11 +39,12 @@ export default {
         })
       }
     },
-    * loadMore(_, { put, select}) {
+    * loadMore(_, { call, put, select}) {
       const oldState = yield select(state => state.IndexModel)
-      const response = listData;
+      const response = yield call(makeListData, {offset:oldState.offset + 5, size:5})
       const newState = update(oldState, {
         hasNext: { $set: response.hasNext },
+        offset: { $set: response.offset},
         list: { $unshift: response.list },
       })
 
