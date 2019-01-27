@@ -15,6 +15,7 @@ class VideoInfo extends Component {
 
   render() {
     const {data} = this.props
+    console.log('video', data)
 
     return (
       <View className='video-info' style={{backgroundImage: `url(${oss_image(data.cover, [660,990])})`}}>

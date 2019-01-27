@@ -21,7 +21,7 @@ class RelationInfo extends Component {
             src={oss_image(data.mainPerson.face, [128, 128])}
           />
           <View className='people-info'>
-            <View className='top'><Text className='name'>{data.mainPerson.realName}</Text><Text className='praise'>认为{data.praiseText}</Text></View>
+            <View className='top'><Text className='name'>{data.mainPerson.name}</Text><Text className='praise'>认为{data.praiseText}</Text></View>
             <View className='bottom' >
               {data.dimension > 1 ? `TA是你的${data.dimension}°朋友` : '可能认识的人'}
             </View>

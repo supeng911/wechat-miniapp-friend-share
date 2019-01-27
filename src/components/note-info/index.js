@@ -12,8 +12,6 @@ class NoteInfo extends Component {
 
     const {data} = this.props
 
-    console.log('reation', data)
-
     return (
       <View>
         {data.type === 'relation' ? (<AtRelationInfo data={data} />): null}
