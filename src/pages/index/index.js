@@ -8,7 +8,7 @@ import './index.less'
 
 @connect(state => {
   return {
-    relationNotes: state.IndexModel.list
+    recommendList: state.IndexModel.list
   };
 })
 class Index extends Component {
@@ -58,26 +58,30 @@ class Index extends Component {
   render () {
 
     const {
-      relationNotes,
+      recommendList,
     } = this.props
 
-    let lastNoteInfo = {}
-    if(relationNotes.length > 0) {
-      lastNoteInfo =  relationNotes[relationNotes.length - 1].reason;
-    }
+    // let lastNoteInfo = {}
+    // if(relationNotes.length > 0) {
+    //   lastNoteInfo =  relationNotes[relationNotes.length - 1].reason;
+    // }
 
+    console.log(111, recommendList)
 
     return (
       <View className='index-container'>
         <View className='touch-container'>
           <AtTouchSlide
-            data={relationNotes}
+            data={recommendList}
             onRemoveItem={this.handleRemoveNote}
             onShowItem={this.handleShowNote}
           />
+
         </View>
         <View className='relation-container'>
+          {/*
           <AtNoteInfo data={lastNoteInfo} />
+          */}
         </View>
       </View>
     )

@@ -1,5 +1,6 @@
 import update from 'immutability-helper'
 import * as service from './service'
+import {listData} from '../../mock-data'
 
 
 export default {
@@ -15,9 +16,10 @@ export default {
     },
   },
   effects: {
-    * fetch(_, {call, put}) {
-      const res = yield call(service.getFeedList, {});
-      yield put({type: 'save', payload: res});
+    * fetch(_, {put}) {
+      // console.log("haha",listData)
+      // const res = yield call(service.getFeedList, {});
+      yield put({type: 'save', payload: listData});
     },
     * removeFirstItem(_,  { put, select}) {
       // 删除第一个元素
