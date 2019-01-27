@@ -61,6 +61,12 @@ class Index extends Component {
       relationNotes,
     } = this.props
 
+    let lastNoteInfo = {}
+    if(relationNotes.length > 0) {
+      lastNoteInfo =  relationNotes[relationNotes.length - 1].reason;
+    }
+
+
     return (
       <View className='index-container'>
         <View className='touch-container'>
@@ -71,7 +77,7 @@ class Index extends Component {
           />
         </View>
         <View className='relation-container'>
-          <AtNoteInfo />
+          <AtNoteInfo data={lastNoteInfo} />
         </View>
       </View>
     )
