@@ -46,13 +46,16 @@ class Index extends Component {
 
   handleShowNote = (noteItem) => {
     const {type} = noteItem;
+    console.log('type', type)
     if(type === 'Video') {
       Taro.navigateTo({
         url: '/pages/detail/video'
       })
+    } else if (type === 'Article') {
+      Taro.navigateTo({
+        url: '/pages/detail/article'
+      })
     }
-    console.log('show note', type)
-
   }
 
   render () {
@@ -61,12 +64,10 @@ class Index extends Component {
       recommendList,
     } = this.props
 
-    // let lastNoteInfo = {}
-    // if(relationNotes.length > 0) {
-    //   lastNoteInfo =  relationNotes[relationNotes.length - 1].reason;
-    // }
-
-    console.log(111, recommendList)
+    let lastRecommendInfo = {}
+    if(recommendList.length > 0) {
+      lastRecommendInfo =  recommendList[recommendList.length - 1].recommend;
+    }
 
     return (
       <View className='index-container'>
@@ -79,9 +80,7 @@ class Index extends Component {
 
         </View>
         <View className='relation-container'>
-          {/*
-          <AtNoteInfo data={lastNoteInfo} />
-          */}
+          <AtNoteInfo data={lastRecommendInfo} />
         </View>
       </View>
     )

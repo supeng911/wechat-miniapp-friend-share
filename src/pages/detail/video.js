@@ -5,35 +5,47 @@ import oss_image from "../../utils/oss_image";
 import AtPraiseBtn from '../../components/praise-btn'
 import PicWechat from "../../assets/pic_wechat.png";
 import './video.less'
-import {formatStr} from "../../utils/format";
 
 
 
-
+@connect(state => {
+  return {
+    videoData: state.DetailModel
+  }
+})
 class VideoDetail extends Component {
 
   config = {
     navigationStyle: 'custom'
   }
 
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'DetailModel/fetchVideo'
+    })
+  }
+
 
   render() {
+
+    const {videoData} = this.props
+
     return (
       <View className='video-root'>
         <Video
           className='video'
-          src='http://file.vbao100.com/764bbbf37285486fedfb5db38164bef5.mp4'
+          src={videoData.path}
+          poster={oss_image(videoData.cover)}
           controls={false}
           autoplay={true}
-          poster='http://misc.aotu.io/booxood/mobile-video/cover_900x500.jpg'
           initialTime='0'
           id='video'
           loop={false}
           muted={false}
         >
           <CoverView className='video-about'>
-            <View className='name'>@123123</View>
-            <View className='about'>123123123</View>
+            <View className='name'>@{videoData.author.nickName}</View>
+            <View className='about'>{videoData.about}</View>
           </CoverView>
 
           <CoverView className='control-ext '>
@@ -47,7 +59,6 @@ class VideoDetail extends Component {
               <Image className='icon' src={PicWechat} />
               <View className='num'>1337</View>
             </View>
-
 
           </CoverView>
 

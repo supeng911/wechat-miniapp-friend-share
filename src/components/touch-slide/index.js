@@ -89,9 +89,11 @@ class TouchSlide extends Component {
   }
 
   handleClick = () => {
+    const { moveItemKey} = this.state
+
     if (this.props.onShowItem) {
       // 显示元素详情
-      this.props.onShowItem()
+      this.props.onShowItem(this.props.data[moveItemKey])
     }
   }
 

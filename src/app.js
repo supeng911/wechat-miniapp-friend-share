@@ -33,8 +33,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/detail/video',
-
-
+      'pages/detail/article',
     ],
     window: {
       backgroundTextStyle: 'light',

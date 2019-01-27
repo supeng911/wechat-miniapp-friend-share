@@ -12,12 +12,12 @@ class NoteInfo extends Component {
 
     const {data} = this.props
 
-    console.log('reation', data.recommend)
+    console.log('reation', data)
 
     return (
       <View>
-        {data.recommend === 'relation' ? (<AtRelationInfo data={data} />): null}
-        {data.recommend === 'group' ? (<AtGroupInfo data={data} />): null}
+        {data.type === 'relation' ? (<AtRelationInfo data={data} />): null}
+        {data.type === 'group' ? (<AtGroupInfo data={data} />): null}
       </View>
     )
   }
