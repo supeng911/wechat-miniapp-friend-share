@@ -6,8 +6,7 @@ import {listData} from '../../mock-data'
 export default {
   namespace: 'IndexModel',
   state: {
-    nextOffset: 0,
-    ieEnd: false,
+    hasNext: true,
     list: [],
   },
   reducers: {
@@ -17,8 +16,6 @@ export default {
   },
   effects: {
     * fetch(_, {put}) {
-      // console.log("haha",listData)
-      // const res = yield call(service.getFeedList, {});
       yield put({type: 'save', payload: listData});
     },
     * removeFirstItem(_,  { put, select}) {
@@ -40,17 +37,12 @@ export default {
         })
       }
     },
-    * loadMore(_, {call, put, select}) {
+    * loadMore(_, { put, select}) {
       const oldState = yield select(state => state.IndexModel)
-      // FIXME
-      const response = yield call(service.getFeedList, {});
-
+      const response = listData;
       const newState = update(oldState, {
-        current: { $set: response.current },
-        hasMore: { $set: response.hasMore },
-        size: { $set: response.size },
-        total: { $set: response.total },
-        data: { $unshift: response.data },
+        hasNext: { $set: response.hasNext },
+        list: { $unshift: response.list },
       })
 
       yield put({type: 'save', payload: newState});
