@@ -1,8 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { connect } from '@tarojs/redux'
-import { View } from '@tarojs/components'
+import { View, Text, Button } from '@tarojs/components'
 import AtNoteInfo from '../../components/note-info'
 import AtTouchSlide from '../../components/touch-slide'
+import AtActionSheet from '../../components/action-sheet'
 
 import './index.less'
 
@@ -19,6 +20,10 @@ class Index extends Component {
     "navigationBarTitleText": "朋友分享",
     "backgroundColor": "#100E1B",
     "backgroundTextStyle": "light"
+  }
+
+  state = {
+    openRelation: false
   }
 
   componentWillMount() {
@@ -58,6 +63,14 @@ class Index extends Component {
     }
   }
 
+  handleOpenRelation = () => {
+    this.setState({openRelation: true})
+  }
+
+  handleCloseRelation = () => {
+    this.setState({openRelation: false})
+  }
+
   render () {
 
     const {
@@ -77,11 +90,18 @@ class Index extends Component {
             onRemoveItem={this.handleRemoveNote}
             onShowItem={this.handleShowNote}
           />
-
         </View>
         <View className='relation-container'>
-          <AtNoteInfo data={lastRecommendInfo} />
+          <AtNoteInfo data={lastRecommendInfo} onOpenRelation={this.handleOpenRelation} />
         </View>
+
+        <AtActionSheet isOpened={this.state.openRelation} onCancel={this.handleCloseRelation}>
+          <View className='re-share'>
+            <View className='info'>您需要达到<Text className='lv'>12 Lv.</Text>才可以查看人脉地图！</View>
+            <View>赶快分享提升等级吧！</View>
+            <Button className='btn-share'>分享</Button>
+          </View>
+        </AtActionSheet>
       </View>
     )
   }

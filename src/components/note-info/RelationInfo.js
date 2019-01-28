@@ -9,12 +9,21 @@ import './index.less'
 
 
 class RelationInfo extends Component {
+
+  handleClickRelation = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    if(this.props.onOpenRelation) {
+      this.props.onOpenRelation()
+    }
+  }
+
   render() {
 
     const { data } = this.props
 
     return (
-      <View className='note-info-root'>
+      <View className='note-info-root' onClick={this.handleClickRelation}>
         <View className='relationship'>
           <AtAvatar
             shape='gradual-circle'
@@ -49,6 +58,7 @@ class RelationInfo extends Component {
 
 RelationInfo.propTypes = {
   data: PropTypes.object,
+  onOpenRelation: PropTypes.func,
 }
 
 export default RelationInfo;

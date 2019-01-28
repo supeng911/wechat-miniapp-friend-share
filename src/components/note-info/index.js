@@ -14,7 +14,7 @@ class NoteInfo extends Component {
 
     return (
       <View>
-        {data.type === 'relation' ? (<AtRelationInfo data={data} />): null}
+        {data.type === 'relation' ? (<AtRelationInfo data={data} onOpenRelation={this.props.onOpenRelation} />): null}
         {data.type === 'group' ? (<AtGroupInfo data={data} />): null}
       </View>
     )
@@ -23,10 +23,11 @@ class NoteInfo extends Component {
 
 NoteInfo.propTypes = {
   data: PropTypes.object,
+  onOpenRelation: PropTypes.func,
 }
 
 NoteInfo.defaultProps = {
-  data: {}
+  data: {},
 }
 
 export default NoteInfo;
