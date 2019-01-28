@@ -16,6 +16,7 @@ import './video.less'
 class VideoDetail extends Component {
 
   config = {
+    navigationBarTextStyle: "white",
     navigationStyle: 'custom'
   }
 
@@ -23,6 +24,11 @@ class VideoDetail extends Component {
     this.props.dispatch({
       type: 'DetailModel/fetchVideo'
     })
+  }
+
+  handleBack = () => {
+    console.log('back')
+    Taro.navigateBack();
   }
 
 
@@ -43,22 +49,24 @@ class VideoDetail extends Component {
           loop={false}
           muted={false}
         >
+          <CoverView className='back-btn' onClick={this.handleBack}>  </CoverView>
+
           <CoverView className='video-about'>
             <View className='name'>@{videoData.author.nickName}</View>
             <View className='about'>{videoData.about}</View>
           </CoverView>
 
           <CoverView className='control-ext '>
-            <View className='face-circle'>
+            <CoverView className='face-circle'>
               <Image className='face' src='http://b2-q.mafengwo.net/s12/M00/DB/96/wKgED1wgiq6AOny0AAfrDmRFrJM12.jpeg' />
-            </View>
+            </CoverView>
 
             <AtPraiseBtn />
 
-            <View className='share-btn'>
+            <CoverView className='share-btn'>
               <Image className='icon' src={PicWechat} />
-              <View className='num'>1337</View>
-            </View>
+              <CoverView className='num'>1337</CoverView>
+            </CoverView>
 
           </CoverView>
 
