@@ -42,6 +42,14 @@ class Index extends Component {
 
   // componentDidHide () { }
 
+  //分享
+  onShareAppMessage() {
+    return {
+      title: '朋友分享DEMMO',
+      path: '/pages/index/index',
+    }
+  };
+
   handleRemoveNote = (noteItem) => {
     // console.log('remove', noteItem)
     this.props.dispatch({
