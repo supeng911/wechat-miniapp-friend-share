@@ -11,6 +11,16 @@ import IconFullGray from "../../assets/icon_full_gray.png";
 
 class ArticleInfo extends Component{
 
+  handleShowShare = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+
+    console.log("show this version")
+    Taro.showToast({
+      title: "version -1.0.4"
+    })
+  }
+
   render() {
     const {data} = this.props
 
@@ -36,7 +46,7 @@ class ArticleInfo extends Component{
 
           <AtPraiseBtn isGray />
 
-          <View className='share-btn' >
+          <View className='share-btn' onClick={this.handleShowShare}>
             <Image className='icon' src={PicWechat} />
             <View className='num gray-color'>1337</View>
           </View>
