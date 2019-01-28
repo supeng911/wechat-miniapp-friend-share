@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Image, Text} from '@tarojs/components'
+import {View, Image, Text, Button} from '@tarojs/components'
 import PropTypes from "prop-types";
 import oss_image from '../../utils/oss_image'
 
@@ -10,16 +10,6 @@ import PicWechat from "../../assets/pic_wechat.png";
 import IconFullGray from "../../assets/icon_full_gray.png";
 
 class ArticleInfo extends Component{
-
-  handleShare = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-
-    Taro.showShareMenu({
-      withShareTicket: true
-    })
-
-  }
 
   render() {
     const {data} = this.props
@@ -46,7 +36,7 @@ class ArticleInfo extends Component{
 
           <AtPraiseBtn isGray />
 
-          <View className='share-btn' onClick={this.handleShare}>
+          <View className='share-btn' >
             <Image className='icon' src={PicWechat} />
             <View className='num gray-color'>1337</View>
           </View>

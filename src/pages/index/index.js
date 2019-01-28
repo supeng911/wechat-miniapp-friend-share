@@ -9,6 +9,7 @@ import './index.less'
 
 @connect(state => {
   return {
+    shareDate: state.share,
     recommendList: state.IndexModel.list
   };
 })
@@ -44,10 +45,8 @@ class Index extends Component {
 
   //分享
   onShareAppMessage() {
-    return {
-      title: '朋友分享DEMMO',
-      path: '/pages/index/index',
-    }
+    const {shareDate} = this.props
+    return shareDate
   };
 
   handleRemoveNote = (noteItem) => {
@@ -80,6 +79,8 @@ class Index extends Component {
   }
 
   render () {
+
+    console.log(111, this.props)
 
     const {
       recommendList,
