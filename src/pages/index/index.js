@@ -20,7 +20,8 @@ class Index extends Component {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "朋友分享",
     "backgroundColor": "#100E1B",
-    "backgroundTextStyle": "light"
+    "backgroundTextStyle": "light",
+    "disableScroll": true
   }
 
   state = {
